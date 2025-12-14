@@ -6,7 +6,7 @@ hr {
   margin: 20px auto; /* Centra la línea y añade espacio arriba/abajo */
 }
 
-text {
+h1 {
   text-align: center;
 }
 
@@ -25,4 +25,48 @@ button {
   height: 15vh;
   image-rendering: pixelated; /* Para Chrome, Edge y Safari */
   image-rendering: crisp-edges; /* Para Firefox */
+}
+
+.boton-transparente {
+  background-color: transparent; /* Hace el fondo invisible */
+  border: none; /* Elimina el borde por completo */
+  /* Opcional: Añade un borde si quieres */
+  /* border: 2px solid #007BFF; */
+  color: #333; /* Color del texto */
+  padding: 10px 20px; /* Espaciado interno */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  font-size: 16px;
+}
+
+.boton-transparente:hover {
+  /* Estilo al pasar el mouse */
+  background-color: rgba(0, 123, 255, 0.1); /* Fondo semitransparente */
+  color: #0056b3;
+}
+
+.red-logo img {
+  width: 4vw;
+}
+
+.fondo-sutil {
+  /* Usamos un gris muy claro (casi blanco) para no competir con el rojo */
+  background-color: #EEEEEE; 
+  
+  /* Bordes redondeados */
+  border-radius: 15px; 
+  
+  /* Relleno (padding) para que el fondo se vea alrededor del botón */
+  padding: 20px 30px; 
+  
+  /* Ajusta el tamaño del contenedor al contenido */
+  display: inline-block; 
+  
+  /* Opcional: una ligera sombra para destacarlo del fondo de la página */
+  box-shadow: 0 4
+}
+
+.bloque-centro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
