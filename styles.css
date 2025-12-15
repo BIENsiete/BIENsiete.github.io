@@ -1,5 +1,6 @@
 /* ¡CORRECCIÓN CLAVE! Esto asegura que el padding y el border se incluyan
-   DENTRO del ancho (25%), eliminando el error de cálculo del slider. */
+   DENTRO del ancho (25%), eliminando el error de cálculo del slider que
+   causa el "salto". */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -103,6 +104,7 @@ button {
 
 .slider-track {
   display: flex;
+  /* Animación más lenta (25s) para que el movimiento sea suave */
   animation: scroll-left 25s linear infinite;
 }
 
