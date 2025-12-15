@@ -1,14 +1,33 @@
+/* 1. Definición de la animación para <hr> */
+@keyframes expandir-hr {
+  0% {
+    width: 0%; /* La línea comienza con 0% de ancho */
+  }
+  100% {
+    width: 80%; /* La línea termina con 80% de ancho */
+  }
+}
+
+/* 2. Aplicación de la animación a <hr> */
 hr {
-  border: none; /* Elimina el borde por defecto */
-  height: 2px; /* Grosor de la línea */
-  background-color: #00000021; /* Color de la línea */
-  width: 80%; /* Ancho de la línea (80% del contenedor) */
-  margin: 20px auto; /* Centra la línea y añade espacio arriba/abajo */
+  border: none;
+  height: 2px;
+  background-color: #00000021;
+  width: 80%; 
+  margin: 20px auto; 
+  
+  /* Propiedades de animación */
+  animation-name: expandir-hr;
+  animation-duration: 1s; 
+  animation-timing-function: ease; 
+  animation-fill-mode: forwards;
 }
 
 h1 {
   text-align: center;
 }
+
+/* Nota: El selector 'h1' es un bloque por defecto, no necesita display: block. */
 
 img {
   display: block;
@@ -23,50 +42,94 @@ button {
 
 .img-grande {
   height: 15vh;
-  image-rendering: pixelated; /* Para Chrome, Edge y Safari */
-  image-rendering: crisp-edges; /* Para Firefox */
+  image-rendering: pixelated; 
+  image-rendering: crisp-edges;
 }
 
 .boton-transparente {
-  background-color: transparent; /* Hace el fondo invisible */
-  border: none; /* Elimina el borde por completo */
-  /* Opcional: Añade un borde si quieres */
-  /* border: 2px solid #007BFF; */
-  color: #333; /* Color del texto */
-  padding: 10px 20px; /* Espaciado interno */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  background-color: transparent;
+  border: none;
+  color: #333; 
+  padding: 10px 20px; 
+  cursor: pointer;
   font-size: 16px;
 }
 
-.boton-transparente:hover {
-  /* Estilo al pasar el mouse */
-  background-color: rgba(0, 123, 255, 0.1); /* Fondo semitransparente */
-  color: #0056b3;
-}
-
+/* --- ESTILOS DE LOGOS DE REDES SOCIALES --- */
 .red-logo img {
   width: 4vw;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4); 
+  border-radius: 8px; 
+  transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-out;
+}
+
+.red-logo img:hover {
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.8), 0 0 10px rgba(0, 123, 255, 0.5);
+  transform: scale(1.05); 
 }
 
 .fondo-sutil {
-  /* Usamos un gris muy claro (casi blanco) para no competir con el rojo */
   background-color: #EEEEEE; 
-  
-  /* Bordes redondeados */
   border-radius: 15px; 
-  
-  /* Relleno (padding) para que el fondo se vea alrededor del botón */
   padding: 20px 30px; 
-  
-  /* Ajusta el tamaño del contenedor al contenido */
   display: inline-block; 
-  
-  /* Opcional: una ligera sombra para destacarlo del fondo de la página */
-  box-shadow: 0 4
-}
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+} 
 
 .bloque-centro {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.contenedor-botones-horizontales {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* --- SLIDER DE AMIGOS --- */
+/* --- SLIDER DE AMIGOS --- */
+.slider-container {
+  width: 100%;
+  overflow: hidden; 
+}
+
+.slider-track {
+  display: flex;
+  /* AUMENTADO: de 10s a 15s para un movimiento más suave con más contenido */
+  animation: scroll-left 15s linear infinite;
+}
+
+.slide {
+  flex-shrink: 0; 
+  width: 25%; 
+}
+
+.slide img {
+  width: 20vw;
+  height: auto;
+  border-radius: 1vw;
+}
+
+@keyframes scroll-left {
+  0% { 
+    transform: translateX(0%); 
+  }
+  100% { 
+    /* ¡CORREGIDO! Ahora movemos 4 slides (4 * 25% = 100%) */
+    transform: translateX(-100%); 
+  } 
+}
+
+/* Opcional: Detener al pasar el ratón */
+.slider-container:hover .slider-track {
+  animation-play-state: paused;
+}
+
+body {
+  text-align: center;
+  background-color:#ed1c24
+}
+
+/* Se eliminó la llave de cierre extra que estaba aquí */
