@@ -1,10 +1,16 @@
+/* ¡CORRECCIÓN CLAVE! Esto asegura que el padding y el border se incluyan
+   DENTRO del ancho (25%), eliminando el error de cálculo del slider. */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* 1. Definición de la animación para <hr> */
 @keyframes expandir-hr {
   0% {
-    width: 0%; /* La línea comienza con 0% de ancho */
+    width: 0%; 
   }
   100% {
-    width: 80%; /* La línea termina con 80% de ancho */
+    width: 80%; 
   }
 }
 
@@ -14,7 +20,7 @@ hr {
   height: 2px;
   background-color: #00000021;
   width: 80%; 
-  margin: 20px auto; 
+  margin: 10px auto; 
   
   /* Propiedades de animación */
   animation-name: expandir-hr;
@@ -26,8 +32,6 @@ hr {
 h1 {
   text-align: center;
 }
-
-/* Nota: El selector 'h1' es un bloque por defecto, no necesita display: block. */
 
 img {
   display: block;
@@ -89,27 +93,53 @@ button {
 }
 
 /* --- SLIDER DE AMIGOS --- */
-/* --- SLIDER DE AMIGOS --- */
 .slider-container {
   width: 100%;
   overflow: hidden; 
+  background-color: rgba(107, 51, 51, 0.9);
+  padding: 20px 0;
+  border-radius: 100px;
 }
 
 .slider-track {
   display: flex;
-  /* AUMENTADO: de 10s a 15s para un movimiento más suave con más contenido */
-  animation: scroll-left 15s linear infinite;
+  animation: scroll-left 25s linear infinite;
 }
 
 .slide {
   flex-shrink: 0; 
-  width: 25%; 
+  width: 25%;
+  /* box-sizing: border-box ya se aplica globalmente */
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 10px 5px; 
 }
 
+/* Estilo de la imagen del amigo (Avatar) */
 .slide img {
-  width: 20vw;
-  height: auto;
-  border-radius: 1vw;
+  width: 10vw;
+  height: 10vw;
+  object-fit: cover; 
+  border-radius: 50%; 
+  margin: 0; 
+  margin-bottom: 5px; 
+  transition: transform 0.3s ease-out;
+  border: 5px solid #000000;
+}
+
+/* Efecto de agrandar la imagen al hacer hover */
+.slide a:hover img {
+    transform: scale(1.1);
+}
+
+/* Estilo del nombre del amigo */
+.nombre-amigo {
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 @keyframes scroll-left {
@@ -117,7 +147,7 @@ button {
     transform: translateX(0%); 
   }
   100% { 
-    /* ¡CORREGIDO! Ahora movemos 4 slides (4 * 25% = 100%) */
+    /* Mueve la distancia de 4 slides (25% * 4 = 100%) */
     transform: translateX(-100%); 
   } 
 }
@@ -137,4 +167,5 @@ body {
   font-size: 14px;
   color: #600a0a;
   margin-top: 10px;
+  text-shadow: #00000095 2px 3px 3px;
 }
