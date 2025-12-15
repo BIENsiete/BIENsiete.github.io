@@ -132,4 +132,9 @@ body {
   background-color:#ed1c24
 }
 
-/* Se eliminó la llave de cierre extra que estaba aquí */
+.autor {
+  text-align: center;
+  font-size: 14px;
+  color: #600a0a;
+  margin-top: 10px;
+}
