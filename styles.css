@@ -1,6 +1,6 @@
-/* ¡CORRECCIÓN CLAVE! Esto asegura que el padding y el border se incluyan
-   DENTRO del ancho (25%), eliminando el error de cálculo del slider que
-   causa el "salto". */
+/* ¡CORRECCIÓN CLAVE! Esto asegura que el padding, el border y el width (25%)
+   sean calculados de forma perfecta por el navegador, eliminando el "salto"
+   al final de la animación del slider. */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -21,6 +21,7 @@ hr {
   height: 2px;
   background-color: #00000021;
   width: 80%; 
+  /* Espacio vertical reducido a 10px (como solicitaste antes) */
   margin: 10px auto; 
   
   /* Propiedades de animación */
